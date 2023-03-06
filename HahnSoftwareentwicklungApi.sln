@@ -11,17 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{62D3AB9E-11E8-4D80-9969-F620A9313780}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HahnSoftwareentwicklung.Api", "HahnSoftwareentwicklung.Api\HahnSoftwareentwicklung.Api.csproj", "{27D0396C-5FB9-42A3-9966-F5218E667E20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.Api", "HahnSoftwareentwicklung.Api\HahnSoftwareentwicklung.Api.csproj", "{27D0396C-5FB9-42A3-9966-F5218E667E20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HahnSoftwareentwicklung.Application", "HahnSoftwareentwicklung.Application\HahnSoftwareentwicklung.Application.csproj", "{FC4F7969-048B-435F-8A37-C29691C31774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.Application", "HahnSoftwareentwicklung.Application\HahnSoftwareentwicklung.Application.csproj", "{FC4F7969-048B-435F-8A37-C29691C31774}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HahnSoftwareentwicklung.Domain", "HahnSoftwareentwicklung.Domain\HahnSoftwareentwicklung.Domain.csproj", "{E4760EB1-8DBC-4737-9A2B-71F1ACA4189A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.Domain", "HahnSoftwareentwicklung.Domain\HahnSoftwareentwicklung.Domain.csproj", "{E4760EB1-8DBC-4737-9A2B-71F1ACA4189A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HahnSoftwareentwicklung.DomainCore", "HahnSoftwareentwicklung.DomainCore\HahnSoftwareentwicklung.DomainCore.csproj", "{B5C26E89-FBBD-43C1-978D-A71B0A34C284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.DomainCore", "HahnSoftwareentwicklung.DomainCore\HahnSoftwareentwicklung.DomainCore.csproj", "{B5C26E89-FBBD-43C1-978D-A71B0A34C284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HahnSoftwareentwicklung.DomainService", "HahnSoftwareentwicklung.DomainService\HahnSoftwareentwicklung.DomainService.csproj", "{A3ADB981-544C-4B4F-8370-F019FAD0C9B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.DomainService", "HahnSoftwareentwicklung.DomainService\HahnSoftwareentwicklung.DomainService.csproj", "{A3ADB981-544C-4B4F-8370-F019FAD0C9B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HahnSoftwareentwicklung.Infrastructure", "HahnSoftwareentwicklung.Infrastructure\HahnSoftwareentwicklung.Infrastructure.csproj", "{3F4CFF9A-8C0E-4957-81E7-11FBB5424D12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.Infrastructure", "HahnSoftwareentwicklung.Infrastructure\HahnSoftwareentwicklung.Infrastructure.csproj", "{3F4CFF9A-8C0E-4957-81E7-11FBB5424D12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
