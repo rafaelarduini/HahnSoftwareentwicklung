@@ -3,7 +3,7 @@ using HahnSoftwareentwicklung.Domain.Entities;
 
 namespace HahnSoftwareentwicklung.Application.Mappers.Interfaces
 {
-    internal interface IProductMapper
+    public interface IProductMapper
     {
         Product MapperDtoToEntity(ProductDto productDto);
 
