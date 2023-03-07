@@ -1,41 +1,49 @@
 ﻿using HahnSoftwareentwicklung.Application.Dtos;
 using HahnSoftwareentwicklung.Application.Interfaces;
+using HahnSoftwareentwicklung.Application.Mappers.Interfaces;
 using HahnSoftwareentwicklung.DomainCore.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HahnSoftwareentwicklung.Application
 {
     public class ClientApplicationService : IClientApplicationService
     {
-        private readonly IClientService clientService;
-        private readonly IClientMapper mapperCLient;
-        public void Add(ClientDto clienteDto)
+        private readonly IClientService _clientService;
+        private readonly IClientMapper _clientMapper;
+
+        public ClientApplicationService(IClientService clientService, IClientMapper clientMapper)
         {
-            throw new NotImplementedException();
+            _clientService = clientService;
+            _clientMapper = clientMapper;
         }
 
-        public void Delete(ClientDto clienteDto)
+        public void Add(ClientDto clientDto)
         {
-            throw new NotImplementedException();
+            var client = _clientMapper.MapperDtoToEntity(clientDto);
+            _clientService.Add(client);
+        }
+
+        public void Delete(ClientDto clientDto)
+        {
+            var client = _clientMapper.MapperDtoToEntity(clientDto);
+            _clientService.Delete(client);
         }
 
         public ClientDto Get(int id)
         {
-            throw new NotImplementedException();
+            var client = _clientService.GetById(id);
+            return _clientMapper.MapperEntityToDto(client);
         }
 
         public IEnumerable<ClientDto> GetAll()
         {
-            throw new NotImplementedException();
+            var clients = _clientService.GetAll();
+            return _clientMapper.MapperListToClientsDto(clients);
         }
 
-        public void Update(ClientDto clienteDto)
+        public void Update(ClientDto clientDto)
         {
-            throw new NotImplementedException();
+            var client = _clientMapper.MapperDtoToEntity(clientDto);
+            _clientService.Update(client);
         }
     }
 }
