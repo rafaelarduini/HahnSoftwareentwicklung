@@ -2,7 +2,7 @@
 
 namespace HahnSoftwareentwicklung.DomainCore.Interfaces.Services
 {
-    public interface IServiceClient : IBaseService<Client>
+    public interface IClientService : IBaseService<Client>
     {
     }
 }
