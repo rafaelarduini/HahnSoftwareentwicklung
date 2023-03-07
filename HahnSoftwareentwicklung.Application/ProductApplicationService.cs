@@ -1,10 +1,11 @@
 ﻿using HahnSoftwareentwicklung.Application.Dtos;
+using HahnSoftwareentwicklung.Application.Interfaces;
 using HahnSoftwareentwicklung.Application.Mappers.Interfaces;
 using HahnSoftwareentwicklung.DomainCore.Interfaces.Services;
 
 namespace HahnSoftwareentwicklung.Application
 {
-    public class ProductApplicationService
+    public class ProductApplicationService : IProductApplicationService
     {
         private readonly IProductService _productService;
         private readonly IProductMapper _productMapper;
