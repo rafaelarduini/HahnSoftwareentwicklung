@@ -2,7 +2,7 @@
 
 namespace HahnSoftwareentwicklung.Application.Interfaces
 {
-    internal interface IProductApplicationService
+    public interface IProductApplicationService
     {
         void Add(ProductDto productDto);
 

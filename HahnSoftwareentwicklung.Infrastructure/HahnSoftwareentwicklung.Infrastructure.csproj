@@ -11,11 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HahnSoftwareentwicklung.Application\HahnSoftwareentwicklung.Application.csproj" />
     <ProjectReference Include="..\HahnSoftwareentwicklung.DomainCore\HahnSoftwareentwicklung.DomainCore.csproj" />
+    <ProjectReference Include="..\HahnSoftwareentwicklung.DomainService\HahnSoftwareentwicklung.DomainService.csproj" />
     <ProjectReference Include="..\HahnSoftwareentwicklung.Domain\HahnSoftwareentwicklung.Domain.csproj" />
   </ItemGroup>
 
