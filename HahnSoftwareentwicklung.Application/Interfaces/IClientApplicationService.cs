@@ -2,7 +2,7 @@
 
 namespace HahnSoftwareentwicklung.Application.Interfaces
 {
-    public interface IClienteApplicationService
+    public interface IClientApplicationService
     {
         void Add(ClientDto clienteDto);
 
