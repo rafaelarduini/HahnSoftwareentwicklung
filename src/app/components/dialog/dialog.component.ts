@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -7,14 +7,19 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  value: any;
+  clientForm!: FormGroup;
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
+  constructor(private formBuilder: FormBuilder) {}
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  ngOnInit(): void {
+    this.clientForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', Validators.required],
+    });
+  }
+
+  addClient() {
+    console.log(this.clientForm.value);
   }
 }
