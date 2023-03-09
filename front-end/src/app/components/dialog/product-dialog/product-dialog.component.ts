@@ -19,8 +19,7 @@ export class ProductDialogComponent {
   ngOnInit(): void {
     this.clientForm = this.formBuilder.group({
       name: ['', Validators.required],
-      surname: ['', Validators.required],
-      email: ['', Validators.required],
+      price: ['', Validators.required],
     });
   }
 

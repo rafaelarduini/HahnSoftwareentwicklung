@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { ClientElement } from 'src/app/app.component';
-import { Client } from 'src/app/model/client';
+import { Client, ClientElement } from 'src/app/model/client';
 import { ClientService } from 'src/app/services/client.service';
 import { DeleteDialogComponent } from '../../dialog/delete-dialog/delete-dialog.component';
 

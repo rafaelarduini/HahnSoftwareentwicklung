@@ -1,16 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { Product } from 'src/app/model/product';
+import { Product, ProductElement } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/product.service';
 import { DeleteDialogComponent } from '../../dialog/delete-dialog/delete-dialog.component';
-
-export interface ProductElement {
-  position: number;
-  id: number;
-  name: string;
-  price: number;
-}
 
 @Component({
   selector: 'app-product-table',
@@ -22,13 +15,7 @@ export class ProductTableComponent {
   products: Product[] = [];
   product: Product = new Product();
 
-  displayedColumns: string[] = [
-    'position',
-    'name',
-    'surname',
-    'email',
-    'delete',
-  ];
+  displayedColumns: string[] = ['position', 'name', 'price', 'delete'];
   dataSource = [...this.products];
 
   @ViewChild(MatTable)

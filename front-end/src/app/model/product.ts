@@ -3,3 +3,9 @@ export class Product {
   name = '';
   price: number = 0;
 }
+export interface ProductElement {
+  position: number;
+  id: number;
+  name: string;
+  price: number;
+}

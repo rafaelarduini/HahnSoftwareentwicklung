@@ -4,14 +4,6 @@ import { ClientDialogComponent } from './components/dialog/client-dialog/client-
 import { ProductDialogComponent } from './components/dialog/product-dialog/product-dialog.component';
 import { Client } from './model/client';
 
-export interface ClientElement {
-  position: number;
-  id: number;
-  name: string;
-  surname: number;
-  email: number;
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
