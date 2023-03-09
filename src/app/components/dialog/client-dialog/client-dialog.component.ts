@@ -4,11 +4,11 @@ import { Client } from 'src/app/model/client';
 import { ClientService } from 'src/app/services/client.service';
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'],
+  selector: 'app-client-dialog',
+  templateUrl: './client-dialog.component.html',
+  styleUrls: ['./client-dialog.component.scss'],
 })
-export class DialogComponent {
+export class ClientDialogComponent {
   clientForm!: FormGroup;
 
   constructor(

@@ -34,7 +34,12 @@ export class ClientService {
     return this.http.put<Client>(this.url, client, httpOptions);
   }
 
-  deleteClient(client: Client): Observable<any> {
-    return this.http.delete<Client>(this.url, httpOptions);
+  deleteClient(clientId: number): Observable<any> {
+    const teste = this.http.delete<Client>(
+      `${this.url}/id?id=${clientId}`,
+      httpOptions
+    );
+
+    return teste;
   }
 }

@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { DialogComponent } from './components/dialog/dialog.component';
+import { ClientDialogComponent } from './components/dialog/client-dialog/client-dialog.component';
 import { Client } from './model/client';
 import { ClientService } from './services/client.service';
 
 export interface ClientElement {
+  position: number;
+  id: number;
   name: string;
   surname: number;
   email: number;
@@ -36,7 +38,7 @@ export class AppComponent implements OnInit {
   addData() {
     this.clients.forEach((c, index) => {
       const data = {
-        position: index + 1,
+        position: index,
         id: c.id,
         name: c.name,
         surname: c.surname,
@@ -47,16 +49,17 @@ export class AppComponent implements OnInit {
     this.table.renderRows();
   }
 
-  removeData(client: Client) {
-    console.log(client);
-    this.dataSource.splice(1, 0);
-    this.table.renderRows();
+  removeData(data: ClientElement) {
+    this.clientService.deleteClient(data.id).subscribe((result) => {
+      this.dataSource.splice(data.position, 1);
+      this.table.renderRows();
+    });
   }
 
   constructor(private clientService: ClientService, public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(ClientDialogComponent, {
       width: '30%',
       data: { client: this.client },
     });
@@ -67,12 +70,8 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.clientService.getAll().subscribe((result) => {
-      alert('suesso');
       this.clients = result;
-      console.log(this.clients);
       this.addData();
     });
-
-    //this.clients = this.clientService();
   }
 }
