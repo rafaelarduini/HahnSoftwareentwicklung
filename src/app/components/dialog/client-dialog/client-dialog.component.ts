@@ -33,7 +33,7 @@ export class ClientDialogComponent {
       email: values.email,
     };
 
-    this.clientService.addClient(client).subscribe((result) => {
+    this.clientService.add(client).subscribe((result) => {
       alert('suesso');
     });
   }

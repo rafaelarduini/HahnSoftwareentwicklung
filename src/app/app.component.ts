@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
   }
 
   removeData(data: ClientElement) {
-    this.clientService.deleteClient(data.id).subscribe((result) => {
+    this.clientService.delete(data.id).subscribe((result) => {
       this.dataSource.splice(data.position, 1);
       this.table.renderRows();
     });
@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.clientService.getAll().subscribe((result) => {
+    this.clientService.get().subscribe((result) => {
       this.clients = result;
       this.addData();
     });
