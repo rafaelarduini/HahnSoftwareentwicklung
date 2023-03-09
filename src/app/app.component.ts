@@ -34,13 +34,22 @@ export class AppComponent implements OnInit {
   table!: MatTable<ClientElement>;
 
   addData() {
-    const randomElementIndex = Math.floor(Math.random() * this.clients.length);
-    this.dataSource.push(this.clients[randomElementIndex]);
+    this.clients.forEach((c, index) => {
+      const data = {
+        position: index + 1,
+        id: c.id,
+        name: c.name,
+        surname: c.surname,
+        email: c.email,
+      };
+      this.dataSource.push(data);
+    });
     this.table.renderRows();
   }
 
-  removeData() {
-    this.dataSource.pop();
+  removeData(client: Client) {
+    console.log(client);
+    this.dataSource.splice(1, 0);
     this.table.renderRows();
   }
 
@@ -57,8 +66,13 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.clients = this.clientService.getClients();
-    console.log(this.clients);
-    this.addData();
+    this.clientService.getAll().subscribe((result) => {
+      alert('suesso');
+      this.clients = result;
+      console.log(this.clients);
+      this.addData();
+    });
+
+    //this.clients = this.clientService();
   }
 }

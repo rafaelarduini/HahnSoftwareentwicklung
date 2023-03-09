@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Client } from 'src/app/model/client';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-dialog',
@@ -9,7 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DialogComponent {
   clientForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private clientService: ClientService
+  ) {}
 
   ngOnInit(): void {
     this.clientForm = this.formBuilder.group({
@@ -20,6 +25,16 @@ export class DialogComponent {
   }
 
   addClient() {
-    console.log(this.clientForm.value);
+    const values = this.clientForm.value;
+
+    const client: Client = {
+      name: values.name,
+      surname: values.surname,
+      email: values.email,
+    };
+
+    this.clientService.addClient(client).subscribe((result) => {
+      alert('suesso');
+    });
   }
 }
