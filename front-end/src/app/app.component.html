@@ -1,4 +1,4 @@
-<app-toolbar></app-toolbar>
+<app-toolbar (click)="handle($event)"></app-toolbar>
 <div class="body">
   <div class="demo-button-container">
     <button
@@ -11,4 +11,5 @@
     </button>
   </div>
   <app-client-table></app-client-table>
+  <app-product-table></app-product-table>
 </div>

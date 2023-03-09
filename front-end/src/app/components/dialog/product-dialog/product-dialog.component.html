@@ -1,1 +1,28 @@
-<p>product-dialog works!</p>
+<h1 mat-dialog-title>Add Client Form</h1>
+<div mat-dialog-content>
+  <form [formGroup]="clientForm" class="body">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input
+        formControlName="name"
+        matInput
+        placeholder="Your name"
+        value="Rafael"
+      /> </mat-form-field
+    ><mat-form-field class="example-full-width">
+      <mat-label>price</mat-label>
+      <input formControlName="price" matInput placeholder="price" value="0" />
+    </mat-form-field>
+  </form>
+  <div class="footer">
+    <button mat-raised-button mat-dialog-close color="accent">Close</button>
+    <button
+      style="margin-left: 10px"
+      mat-raised-button
+      color="primary"
+      (click)="addClient()"
+    >
+      Save
+    </button>
+  </div>
+</div>

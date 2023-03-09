@@ -10,15 +10,16 @@
   <button
     style="margin-left: 20px"
     mat-raised-button
-    (click)="handleClick($event)"
+    (click)="handleClientsButtonClick()"
+    color="{{ clientSelected ? 'accent' : '' }}"
   >
     Clients
   </button>
   <button
     style="margin-left: 20px"
     mat-raised-button
-    (click)="handleClick($event)"
-    color="accent"
+    (click)="handleProductsButtonClick()"
+    color="{{ !clientSelected ? 'accent' : '' }}"
   >
     Products
   </button>
