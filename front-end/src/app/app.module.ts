@@ -16,10 +16,15 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientDialogComponent } from './components/dialog/client-dialog/client-dialog.component';
 import { ProductDialogComponent } from './components/dialog/product-dialog/product-dialog.component';
-import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
+import { DeleteDialogComponent } from './components/dialog/delete-dialog/delete-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, ClientDialogComponent, ProductDialogComponent, ConfirmDialogComponent],
+  declarations: [
+    AppComponent,
+    ClientDialogComponent,
+    ProductDialogComponent,
+    DeleteDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

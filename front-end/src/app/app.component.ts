@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { ClientDialogComponent } from './components/dialog/client-dialog/client-dialog.component';
+import { DeleteDialogComponent } from './components/dialog/delete-dialog/delete-dialog.component';
 import { Client } from './model/client';
 import { ClientService } from './services/client.service';
 
@@ -50,16 +51,28 @@ export class AppComponent implements OnInit {
   }
 
   removeData(data: ClientElement) {
-    this.clientService.delete(data.id).subscribe((result) => {
-      this.dataSource.splice(data.position, 1);
-      this.table.renderRows();
-    });
+    this.openDeleteDialog();
+    // this.clientService.delete(data.id).subscribe((result) => {
+    //   this.dataSource.splice(data.position, 1);
+    //   this.table.renderRows();
+    // });
   }
 
   constructor(private clientService: ClientService, public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ClientDialogComponent, {
+      width: '30%',
+      data: { client: this.client },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.client = result;
+    });
+  }
+
+  openDeleteDialog(): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '30%',
       data: { client: this.client },
     });
