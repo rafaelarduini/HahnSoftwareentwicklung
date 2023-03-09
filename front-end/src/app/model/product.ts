@@ -7,5 +7,5 @@ export interface ProductElement {
   position: number;
   id: number;
   name: string;
-  price: number;
+  price: string;
 }

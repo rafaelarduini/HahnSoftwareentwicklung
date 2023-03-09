@@ -8,6 +8,6 @@ export interface ClientElement {
   position: number;
   id: number;
   name: string;
-  surname: number;
-  email: number;
+  surname: string;
+  email: string;
 }

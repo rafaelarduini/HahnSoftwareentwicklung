@@ -1,0 +1,62 @@
+<div class="body">
+  <div class="demo-button-container">
+    <button
+      style="margin-left: 20px"
+      mat-raised-button
+      (click)="openAddDialog()"
+      class="demo-button"
+    >
+      Add data
+    </button>
+  </div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 demo-table"
+  >
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>price</th>
+      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>Edit</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="openDeleteDialog(element)"
+          title="View Contact"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="openDeleteDialog(element)"
+          title="View Contact"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

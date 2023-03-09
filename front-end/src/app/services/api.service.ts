@@ -39,7 +39,6 @@ export class ApiService<T extends Resource> {
   get(): Observable<T[]> {
     return this.httpClient.get(`${this.url}/${this.endpoint}`).pipe(
       map((data) => {
-        console.log(data);
         return this.convertData(data);
       })
     );

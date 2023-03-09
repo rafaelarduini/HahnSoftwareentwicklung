@@ -33,6 +33,8 @@ export class ClientSerializer {
     return {
       id: client.id,
       name: client.name,
+      surname: client.surname,
+      email: client.email,
     };
   }
 }

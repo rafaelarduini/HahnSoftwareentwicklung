@@ -18,8 +18,8 @@ import { ClientDialogComponent } from './components/dialog/client-dialog/client-
 import { ProductDialogComponent } from './components/dialog/product-dialog/product-dialog.component';
 import { DeleteDialogComponent } from './components/dialog/delete-dialog/delete-dialog.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ClientTableComponent } from './components/tables/client-table/client-table.component';
-import { ProductTableComponent } from './components/tables/product-table/product-table.component';
+import { ClientComponent } from './components/client/client.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,8 @@ import { ProductTableComponent } from './components/tables/product-table/product
     ProductDialogComponent,
     DeleteDialogComponent,
     ToolbarComponent,
-    ClientTableComponent,
-    ProductTableComponent,
+    ClientComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

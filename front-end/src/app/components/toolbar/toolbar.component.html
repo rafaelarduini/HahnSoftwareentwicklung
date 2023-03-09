@@ -15,11 +15,13 @@
   >
     Clients
   </button>
+
   <button
     style="margin-left: 20px"
     mat-raised-button
     (click)="handleProductsButtonClick()"
     color="{{ !clientSelected ? 'accent' : '' }}"
+    routeLink="/Products"
   >
     Products
   </button>

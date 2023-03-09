@@ -1,5 +1,5 @@
-import { IfStmt } from '@angular/compiler';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,20 +7,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent {
-  clientSelected: boolean = true;
-  @Output() click = new EventEmitter();
+  clientSelected!: boolean;
+
+  constructor(private router: Router) {}
 
   public handleClientsButtonClick() {
     if (!this.clientSelected) {
       this.clientSelected = true;
-      this.click.emit(this.clientSelected);
+      this.router.navigate(['/clients']);
     }
   }
 
   public handleProductsButtonClick() {
     if (this.clientSelected) {
       this.clientSelected = false;
-      this.click.emit(this.clientSelected);
+      this.router.navigate(['/products']);
     }
   }
 }

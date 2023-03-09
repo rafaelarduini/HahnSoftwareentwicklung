@@ -1,6 +1,5 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Product } from '../model/product';
 import { ApiService } from './api.service';
 
@@ -32,6 +31,7 @@ export class ProductSerializer {
     return {
       id: product.id,
       name: product.name,
+      price: product.price,
     };
   }
 }
