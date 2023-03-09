@@ -1,10 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTable } from '@angular/material/table';
 import { ClientDialogComponent } from './components/dialog/client-dialog/client-dialog.component';
-import { DeleteDialogComponent } from './components/dialog/delete-dialog/delete-dialog.component';
 import { Client } from './model/client';
-import { ClientService } from './services/client.service';
 
 export interface ClientElement {
   position: number;
@@ -19,72 +16,18 @@ export interface ClientElement {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'HahnSoftwareentwicklungFrontEnd';
-  clients: Client[] = [];
   client: Client = new Client();
 
-  displayedColumns: string[] = [
-    'position',
-    'name',
-    'surname',
-    'email',
-    'delete',
-  ];
-  dataSource = [...this.clients];
+  constructor(public dialog: MatDialog) {}
 
-  @ViewChild(MatTable)
-  table!: MatTable<ClientElement>;
-
-  addData() {
-    this.clients.forEach((c, index) => {
-      const data = {
-        position: index,
-        id: c.id,
-        name: c.name,
-        surname: c.surname,
-        email: c.email,
-      };
-      this.dataSource.push(data);
-    });
-    this.table.renderRows();
-  }
-
-  removeData(data: ClientElement) {
-    this.openDeleteDialog();
-    // this.clientService.delete(data.id).subscribe((result) => {
-    //   this.dataSource.splice(data.position, 1);
-    //   this.table.renderRows();
-    // });
-  }
-
-  constructor(private clientService: ClientService, public dialog: MatDialog) {}
-
-  openDialog(): void {
+  openClientDialog(): void {
     const dialogRef = this.dialog.open(ClientDialogComponent, {
       width: '30%',
-      data: { client: this.client },
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.client = result;
-    });
-  }
-
-  openDeleteDialog(): void {
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      width: '30%',
-      data: { client: this.client },
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      this.client = result;
-    });
-  }
-  ngOnInit(): void {
-    this.clientService.get().subscribe((result) => {
-      this.clients = result;
-      this.addData();
     });
   }
 }

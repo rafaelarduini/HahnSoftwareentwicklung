@@ -17,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ClientDialogComponent } from './components/dialog/client-dialog/client-dialog.component';
 import { ProductDialogComponent } from './components/dialog/product-dialog/product-dialog.component';
 import { DeleteDialogComponent } from './components/dialog/delete-dialog/delete-dialog.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ClientTableComponent } from './components/tables/client-table/client-table.component';
+import { ProductTableComponent } from './components/tables/product-table/product-table.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { DeleteDialogComponent } from './components/dialog/delete-dialog/delete-
     ClientDialogComponent,
     ProductDialogComponent,
     DeleteDialogComponent,
+    ToolbarComponent,
+    ClientTableComponent,
+    ProductTableComponent,
   ],
   imports: [
     BrowserModule,

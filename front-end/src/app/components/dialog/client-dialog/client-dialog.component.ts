@@ -27,11 +27,10 @@ export class ClientDialogComponent {
   addClient() {
     const values = this.clientForm.value;
 
-    const client: Client = {
-      name: values.name,
-      surname: values.surname,
-      email: values.email,
-    };
+    const client = new Client();
+    client.name = values.name;
+    client.surname = values.surname;
+    client.email = values.email;
 
     this.clientService.add(client).subscribe((result) => {
       alert('suesso');

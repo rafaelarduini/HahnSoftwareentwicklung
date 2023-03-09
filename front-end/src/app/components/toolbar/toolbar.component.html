@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>create</mat-icon>
+  </button>
+  <span>Hahn Angular CRUD</span>
+  <button
+    style="margin-left: 20px"
+    mat-raised-button
+    (click)="handleClick($event)"
+  >
+    Clients
+  </button>
+  <button
+    style="margin-left: 20px"
+    mat-raised-button
+    (click)="handleClick($event)"
+    color="accent"
+  >
+    Products
+  </button>
+</mat-toolbar>
