@@ -22,10 +22,9 @@ namespace HahnSoftwareentwicklung.Application
             _clientService.Add(client);
         }
 
-        public void Delete(ClientDto clientDto)
+        public void Delete(int id)
         {
-            var client = _clientMapper.MapperDtoToEntity(clientDto);
-            _clientService.Delete(client);
+            _clientService.Delete(id);
         }
 
         public ClientDto Get(int id)

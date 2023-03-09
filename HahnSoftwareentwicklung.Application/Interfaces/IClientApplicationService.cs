@@ -8,7 +8,7 @@ namespace HahnSoftwareentwicklung.Application.Interfaces
 
         void Update(ClientDto clienteDto);
 
-        void Delete(ClientDto clienteDto);
+        void Delete(int id);
 
         IEnumerable<ClientDto> GetAll();
 

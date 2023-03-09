@@ -18,8 +18,9 @@ namespace HahnSoftwareentwicklung.Infrastructure.Data.Repositories
             _sqlContext.SaveChanges();
         }
 
-        public void Delete(TEntity obj)
+        public void Delete(int id)
         {
+            var obj = _sqlContext.Set<TEntity>().Find(id);
             _sqlContext.Set<TEntity>().Remove(obj);
             _sqlContext.SaveChanges();
         }

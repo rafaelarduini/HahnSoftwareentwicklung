@@ -22,10 +22,9 @@ namespace HahnSoftwareentwicklung.Application
             _productService.Add(product);
         }
 
-        public void Delete(ProductDto productDto)
+        public void Delete(int id)
         {
-            var product = _productMapper.MapperDtoToEntity(productDto);
-            _productService.Delete(product);
+            _productService.Delete(id);
         }
 
         public ProductDto Get(int id)

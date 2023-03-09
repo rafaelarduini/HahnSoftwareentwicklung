@@ -17,9 +17,9 @@ namespace HahnSoftwareentwicklung.DomainService
             _repository.Add(obj);
         }
 
-        public void Delete(TEntity obj)
+        public void Delete(int id)
         {
-            _repository.Delete(obj);
+            _repository.Delete(id);
         }
 
         public IEnumerable<TEntity> GetAll()

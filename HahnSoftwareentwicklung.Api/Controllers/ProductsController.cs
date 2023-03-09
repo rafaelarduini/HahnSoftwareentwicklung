@@ -53,15 +53,15 @@ namespace HahnSoftwareentwicklung.Api.Controllers
             return Ok("Product updated successfully!");
         }
 
-        [HttpDelete()]
-        public ActionResult Delete([FromBody] ProductDto productDto)
+        [HttpDelete("id")]
+        public ActionResult Delete(int id)
         {
-            if (productDto == null)
+            if (id == 0)
             {
                 return NotFound();
             }
 
-            _productApplicationService.Delete(productDto);
+            _productApplicationService.Delete(id);
             return Ok("Product deleted successfully!");
         }
     }

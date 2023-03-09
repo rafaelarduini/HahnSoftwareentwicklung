@@ -8,7 +8,7 @@ namespace HahnSoftwareentwicklung.Application.Interfaces
 
         void Update(ProductDto productDto);
 
-        void Delete(ProductDto productDto);
+        void Delete(int id);
 
         IEnumerable<ProductDto> GetAll();
 

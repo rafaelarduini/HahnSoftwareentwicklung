@@ -6,7 +6,7 @@
 
         void Update(TEntitiy obj);
 
-        void Delete(TEntitiy obj);
+        void Delete(int id);
 
         IEnumerable<TEntitiy> GetAll();
 
