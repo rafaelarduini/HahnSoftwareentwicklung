@@ -27,13 +27,26 @@ export class ClientDialogComponent {
   ngOnInit(): void {
     this.clientForm = this.formBuilder.group({
       id: [this.client.id],
-      name: [this.client.name, Validators.required],
-      surname: [this.client.surname, Validators.required],
-      email: [this.client.email, Validators.required],
+      name: [this.client.name, Validators.required, Validators.maxLength(100)],
+      surname: [
+        this.client.surname,
+        Validators.required,
+        Validators.maxLength(100),
+      ],
+      email: [
+        this.client.email,
+        Validators.required,
+        Validators.maxLength(100),
+        Validators.email,
+      ],
     });
   }
 
   onConfirm(): void {
-    this.dialogRef.close(this.clientForm.value);
+    if (this.clientForm.valid) {
+      this.dialogRef.close(this.clientForm.value);
+    } else {
+      alert('Please fill out the form correctly.');
+    }
   }
 }

@@ -26,12 +26,16 @@ export class ProductDialogComponent {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      price: ['', Validators.required],
+      name: [this.product.name, Validators.required, Validators.maxLength(100)],
+      price: [this.product.price, Validators.min(0), Validators.maxLength(100)],
     });
   }
 
   onConfirm(): void {
-    this.dialogRef.close(this.productForm.value);
+    if (this.productForm.valid) {
+      this.dialogRef.close(this.productForm.value);
+    } else {
+      alert('Please fill out the form correctly.');
+    }
   }
 }
