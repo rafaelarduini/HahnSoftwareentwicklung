@@ -14,14 +14,14 @@ export class ToolbarComponent {
   public handleClientsButtonClick() {
     if (!this.clientSelected) {
       this.clientSelected = true;
-      this.router.navigate(['/clients']);
+      this.router.navigate(['/Clients']);
     }
   }
 
   public handleProductsButtonClick() {
     if (this.clientSelected) {
       this.clientSelected = false;
-      this.router.navigate(['/products']);
+      this.router.navigate(['/Products']);
     }
   }
 }

@@ -32,6 +32,10 @@ export class ClientComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getClients();
+  }
+
+  private getClients() {
     this.clientService.get().subscribe((clientsResponse) => {
       this.clients = clientsResponse;
       this.fetchTableData();
@@ -59,8 +63,7 @@ export class ClientComponent implements OnInit {
           if (result.status) {
             alert(`${result.error.title}`);
           } else {
-            this.clients.push(client);
-            this.fetchTableData();
+            this.getClients();
           }
         });
       }

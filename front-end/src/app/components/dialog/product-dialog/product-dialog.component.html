@@ -3,7 +3,12 @@
   <form [formGroup]="productForm" class="body">
     <mat-form-field>
       <mat-label>Name</mat-label>
-      <input formControlName="name" matInput placeholder="Your name" />
+      <input
+        formControlName="name"
+        matInput
+        placeholder="Your name"
+        value="{{ product.name }}"
+      />
     </mat-form-field>
     <mat-form-field>
       <mat-label>price</mat-label>
@@ -12,6 +17,7 @@
         type="number"
         matInput
         placeholder="price"
+        value="{{ product.price }}"
       />
     </mat-form-field>
   </form>

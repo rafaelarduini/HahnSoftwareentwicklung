@@ -25,6 +25,10 @@ export class ProductComponent {
   ) {}
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  private getProducts() {
     this.productService.get().subscribe((productsResponse) => {
       this.products = productsResponse;
       this.fetchTableData();
@@ -52,8 +56,7 @@ export class ProductComponent {
           if (result.status) {
             alert(`${result.error.title}`);
           } else {
-            this.products.push(product);
-            this.fetchTableData();
+            this.getProducts();
           }
         });
       }
