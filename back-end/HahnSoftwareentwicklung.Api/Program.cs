@@ -23,15 +23,13 @@ builder.Services.AddDbContext<SqlContext>(options =>
 });
 
 builder.Services.AddCors();
-builder.Services.AddControllers().AddFluentValidation();
+builder.Services.AddControllers().AddFluentValidation(config =>
+{
+    config.RegisterValidatorsFromAssembly(typeof(Program).Assembly);
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddTransient<IValidator<ClientPostRequest>, ClientPostValidator>();
-builder.Services.AddTransient<IValidator<ClientPutRequest>, ClientPutValidator>();
-builder.Services.AddTransient<IValidator<ProductPostRequest>, ProductPostValidator>();
-builder.Services.AddTransient<IValidator<ProductPutRequest>, ProductPutValidator>();
 
 var app = builder.Build();
 
