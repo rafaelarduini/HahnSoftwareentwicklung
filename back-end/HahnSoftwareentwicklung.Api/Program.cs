@@ -1,9 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using FluentValidation;
 using FluentValidation.AspNetCore;
-using HahnSoftwareentwicklung.Api.Model.Client;
-using HahnSoftwareentwicklung.Api.Model.Product;
 using HahnSoftwareentwicklung.Infrastructure.CrossCutting.IOC;
 using HahnSoftwareentwicklung.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
