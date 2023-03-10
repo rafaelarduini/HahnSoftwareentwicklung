@@ -19,46 +19,83 @@ namespace HahnSoftwareentwicklung.Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<ProductDto>> Get()
         {
-            return Ok(_productApplicationService.GetAll());
+            try
+            {
+                return Ok(_productApplicationService.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         [HttpGet("id")]
         public ActionResult<ProductDto> Get(int id)
         {
-            if (id == 0)
-                return NotFound();
+            try
+            {
+                if (id == 0)
+                    return NotFound();
 
-            return Ok(_productApplicationService.Get(id));
+                return Ok(_productApplicationService.Get(id));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
         public ActionResult Post([FromBody] ProductPostRequest product)
         {
-            if (product == null)
-                return NotFound();
+            try
+            {
+                if (product == null)
+                    return NotFound();
 
-            _productApplicationService.Add(product);
-            return Ok(product);
+                _productApplicationService.Add(product);
+
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut]
         public ActionResult Put([FromBody] ProductPutRequest product)
         {
-            if (product == null)
-                return NotFound();
+            try
+            {
+                if (product == null)
+                    return NotFound();
 
-            _productApplicationService.Update(product);
-            return Ok(product);
+                _productApplicationService.Update(product);
+
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("id")]
         public ActionResult Delete(int id)
         {
-            if (id == 0)
-                return NotFound();
+            try
+            {
+                if (id == 0)
+                    return NotFound();
 
-            _productApplicationService.Delete(id);
-            return Ok(id);
+                _productApplicationService.Delete(id);
+                return Ok(id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
