@@ -17,6 +17,7 @@ export class ProductService extends ApiService<Product> {
     super(httpProduct, 'Products', new ProductSerializer());
   }
 }
+
 export class ProductSerializer {
   fromJson(json: any): Product {
     const product = new Product();

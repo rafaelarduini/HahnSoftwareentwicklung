@@ -1,8 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Client, ClientElement } from 'src/app/model/client';
-import { ClientService } from 'src/app/services/client.service';
+import { Client } from 'src/app/model/client';
 
 @Component({
   selector: 'app-client-dialog',

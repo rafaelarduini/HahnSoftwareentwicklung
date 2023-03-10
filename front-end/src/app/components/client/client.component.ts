@@ -55,8 +55,10 @@ export class ClientComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((client: Client) => {
       if (client) {
-        this.clientService.add(client).subscribe((result) => {
-          if (result) {
+        this.clientService.add(client).subscribe((result: any) => {
+          if (result.status) {
+            alert(`${result.error.title}`);
+          } else {
             this.clients.push(client);
             this.fetchTableData();
           }
@@ -75,8 +77,10 @@ export class ClientComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((client: Client) => {
       if (client) {
-        this.clientService.update(client).subscribe((result) => {
-          if (result) {
+        this.clientService.update(client).subscribe((result: any) => {
+          if (result.status) {
+            alert(`${result.error.title}`);
+          } else {
             this.clients[element.position] = client;
             this.fetchTableData();
           }
@@ -94,7 +98,9 @@ export class ClientComponent implements OnInit {
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.clientService.delete(element.id).subscribe((result) => {
-          if (result) {
+          if (result.status) {
+            alert(`${result.error.title}`);
+          } else {
             this.clients.splice(element.position, 1);
             this.fetchTableData();
           }

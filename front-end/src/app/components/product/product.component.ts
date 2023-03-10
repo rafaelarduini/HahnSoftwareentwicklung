@@ -25,43 +25,80 @@ export class ProductComponent {
   ) {}
 
   ngOnInit(): void {
-    this.productService.get().subscribe((result) => {
-      this.products = result;
-      this.addData();
+    this.productService.get().subscribe((productsResponse) => {
+      this.products = productsResponse;
+      this.fetchTableData();
     });
   }
-  addData() {
-    this.products.forEach((c, index) => {
-      const data = {
-        position: index,
-        id: c.id,
-        name: c.name,
-        price: c.price,
-      };
-      this.dataSource.push(data);
+
+  private fetchTableData(): void {
+    this.dataSource = [];
+    this.products.forEach((product, index) => {
+      const element = Object.assign({ position: index }, product);
+
+      this.dataSource.push(element);
     });
     this.table.renderRows();
   }
 
-  openAddDialog(): void {
+  public openAddDialog(): void {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
       width: '30%',
     });
-    dialogRef.afterClosed().subscribe((result) => {});
-  }
 
-  openEditDialog(element: ProductElement): void {
-    const dialogRef = this.dialog.open(ProductDialogComponent, {
-      data: { product: element },
+    dialogRef.afterClosed().subscribe((product: Product) => {
+      if (product) {
+        this.productService.add(product).subscribe((result: any) => {
+          if (result.status) {
+            alert(`${result.error.title}`);
+          } else {
+            this.products.push(product);
+            this.fetchTableData();
+          }
+        });
+      }
     });
-    dialogRef.afterClosed().subscribe((result) => {});
   }
 
-  openDeleteDialog(element: ProductElement): void {
+  public openEditDialog(element: ProductElement): void {
+    const product: Product = Object.assign(element);
+
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
+      width: '30%',
+      data: product,
+    });
+
+    dialogRef.afterClosed().subscribe((product: Product) => {
+      if (product) {
+        this.productService.update(product).subscribe((result: any) => {
+          if (result.status) {
+            alert(`${result.error.title}`);
+          } else {
+            this.products[element.position] = product;
+            this.fetchTableData();
+          }
+        });
+      }
+    });
+  }
+
+  public openDeleteDialog(element: ProductElement): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '30%',
-      data: { product: element },
+      data: element.name,
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.productService.delete(element.id).subscribe((result) => {
+          if (result.status) {
+            alert(`${result.error.title}`);
+          } else {
+            this.products.splice(element.position, 1);
+            this.fetchTableData();
+          }
+        });
+      }
+    });
   }
 }

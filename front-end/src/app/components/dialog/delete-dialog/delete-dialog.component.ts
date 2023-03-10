@@ -13,7 +13,6 @@ export class DeleteDialogComponent {
     public dialogRef: MatDialogRef<DeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public name: string
   ) {
-    console.log(name);
     this.elementName = name;
   }
 

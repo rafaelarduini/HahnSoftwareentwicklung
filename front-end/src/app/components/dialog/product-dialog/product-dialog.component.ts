@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from 'src/app/model/product';
-import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-dialog',
@@ -9,29 +9,29 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-dialog.component.scss'],
 })
 export class ProductDialogComponent {
-  clientForm!: FormGroup;
+  productForm!: FormGroup;
+  product = new Product();
+  isEdit: boolean = false;
 
   constructor(
+    public dialogRef: MatDialogRef<ProductDialogComponent>,
     private formBuilder: FormBuilder,
-    private productService: ProductService
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public productData: Product
+  ) {
+    if (productData) {
+      this.product = productData;
+      this.isEdit = true;
+    }
+  }
 
   ngOnInit(): void {
-    this.clientForm = this.formBuilder.group({
+    this.productForm = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
     });
   }
 
-  addClient() {
-    const values = this.clientForm.value;
-
-    const client = new Product();
-    client.name = values.name;
-    client.price = values.price;
-
-    this.productService.add(client).subscribe((result) => {
-      alert('suesso');
-    });
+  onConfirm(): void {
+    this.dialogRef.close(this.productForm.value);
   }
 }
