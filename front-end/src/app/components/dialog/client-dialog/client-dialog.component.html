@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Add Client Form</h1>
+<h1 mat-dialog-title>{{ isEdit ? "Edit" : "Add" }} Client Form</h1>
 <div mat-dialog-content>
   <form [formGroup]="clientForm" class="body">
     <mat-form-field class="example-full-width">
@@ -7,23 +7,25 @@
         formControlName="name"
         matInput
         placeholder="Your name"
-        value="Rafael"
-      /> </mat-form-field
-    ><mat-form-field class="example-full-width">
+        value="{{ client.name }}"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
       <mat-label>Surname</mat-label>
       <input
         formControlName="surname"
         matInput
         placeholder="Your surname"
-        value=""
-      /> </mat-form-field
-    ><mat-form-field class="example-full-width">
+        value="{{ client.surname }}"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
       <mat-label>Email</mat-label>
       <input
         formControlName="email"
         matInput
         placeholder="name@email.com"
-        value="Email"
+        value="{{ client.email }}"
       />
     </mat-form-field>
   </form>
@@ -33,7 +35,7 @@
       style="margin-left: 10px"
       mat-raised-button
       color="primary"
-      (click)="addClient()"
+      (click)="onConfirm()"
     >
       Save
     </button>

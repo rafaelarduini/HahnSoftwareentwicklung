@@ -52,7 +52,7 @@ export class ProductComponent {
 
   openEditDialog(element: ProductElement): void {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
-      data: { client: element },
+      data: { product: element },
     });
     dialogRef.afterClosed().subscribe((result) => {});
   }

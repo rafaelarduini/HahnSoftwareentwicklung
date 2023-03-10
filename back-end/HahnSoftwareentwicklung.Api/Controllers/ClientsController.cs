@@ -37,7 +37,7 @@ namespace HahnSoftwareentwicklung.Api.Controllers
 
             _clientApplicationService.Add(clientDto);
 
-            return Ok("Client registered successfully!");
+            return Ok(clientDto);
         }
 
         [HttpPut]
@@ -50,7 +50,7 @@ namespace HahnSoftwareentwicklung.Api.Controllers
 
             _clientApplicationService.Update(clientDto);
 
-            return Ok("Client updated successfully!");
+            return Ok(clientDto);
         }
 
         [HttpDelete("id")]
@@ -61,8 +61,10 @@ namespace HahnSoftwareentwicklung.Api.Controllers
                 return NotFound();
             }
 
+            var clientDto = new ClientDto();
+
             _clientApplicationService.Delete(id);
-            return Ok("Client deleted successfully!");
+            return Ok(clientDto);
         }
     }
 }

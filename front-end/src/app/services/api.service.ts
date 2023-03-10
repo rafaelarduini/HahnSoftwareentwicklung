@@ -22,11 +22,9 @@ export class ApiService<T extends Resource> {
   }
 
   public update(item: T): Observable<T> {
+    console.log(item, 'item');
     return this.httpClient
-      .put<T>(
-        `${this.url}/${this.endpoint}/${item.id}`,
-        this.serializer.toJson(item)
-      )
+      .put<T>(`${this.url}/${this.endpoint}`, this.serializer.toJson(item))
       .pipe(map((data) => this.serializer.fromJson(data) as T));
   }
 

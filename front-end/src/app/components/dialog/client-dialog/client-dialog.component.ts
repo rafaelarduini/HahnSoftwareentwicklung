@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Client } from 'src/app/model/client';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Client, ClientElement } from 'src/app/model/client';
 import { ClientService } from 'src/app/services/client.service';
 
 @Component({
@@ -10,30 +11,30 @@ import { ClientService } from 'src/app/services/client.service';
 })
 export class ClientDialogComponent {
   clientForm!: FormGroup;
+  client = new Client();
+  isEdit: boolean = false;
 
   constructor(
+    public dialogRef: MatDialogRef<ClientDialogComponent>,
     private formBuilder: FormBuilder,
-    private clientService: ClientService
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public clientData: Client
+  ) {
+    if (clientData) {
+      this.client = clientData;
+      this.isEdit = true;
+    }
+  }
 
   ngOnInit(): void {
     this.clientForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      email: ['', Validators.required],
+      id: [this.client.id],
+      name: [this.client.name, Validators.required],
+      surname: [this.client.surname, Validators.required],
+      email: [this.client.email, Validators.required],
     });
   }
 
-  addClient() {
-    const values = this.clientForm.value;
-
-    const client = new Client();
-    client.name = values.name;
-    client.surname = values.surname;
-    client.email = values.email;
-
-    this.clientService.add(client).subscribe((result) => {
-      alert('suesso');
-    });
+  onConfirm(): void {
+    this.dialogRef.close(this.clientForm.value);
   }
 }

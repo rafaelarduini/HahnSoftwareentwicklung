@@ -32,45 +32,74 @@ export class ClientComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.clientService.get().subscribe((result) => {
-      this.clients = result;
-      this.addData();
+    this.clientService.get().subscribe((clientsResponse) => {
+      this.clients = clientsResponse;
+      this.fetchTableData();
     });
   }
 
-  private addData(): void {
+  private fetchTableData(): void {
+    this.dataSource = [];
     this.clients.forEach((client, index) => {
-      const data = {
-        position: index,
-        id: client.id,
-        name: client.name,
-        surname: client.surname,
-        email: client.email,
-      };
-      this.dataSource.push(data);
+      const element = Object.assign({ position: index }, client);
+
+      this.dataSource.push(element);
     });
     this.table.renderRows();
   }
 
-  openAddDialog(): void {
+  public openAddDialog(): void {
     const dialogRef = this.dialog.open(ClientDialogComponent, {
       width: '30%',
     });
-    dialogRef.afterClosed().subscribe((result) => {});
-  }
 
-  openEditDialog(element: ClientElement): void {
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      data: { client: element },
+    dialogRef.afterClosed().subscribe((client: Client) => {
+      if (client) {
+        this.clientService.add(client).subscribe((result) => {
+          if (result) {
+            this.clients.push(client);
+            this.fetchTableData();
+          }
+        });
+      }
     });
-    dialogRef.afterClosed().subscribe((result) => {});
   }
 
-  openDeleteDialog(element: ClientElement): void {
+  public openEditDialog(element: ClientElement): void {
+    const client: Client = Object.assign(element);
+
+    const dialogRef = this.dialog.open(ClientDialogComponent, {
+      width: '30%',
+      data: client,
+    });
+
+    dialogRef.afterClosed().subscribe((client: Client) => {
+      if (client) {
+        this.clientService.update(client).subscribe((result) => {
+          if (result) {
+            this.clients[element.position] = client;
+            this.fetchTableData();
+          }
+        });
+      }
+    });
+  }
+
+  public openDeleteDialog(element: ClientElement): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '30%',
-      data: { client: element },
+      data: element.name,
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.clientService.delete(element.id).subscribe((result) => {
+          if (result) {
+            this.clients.splice(element.position, 1);
+            this.fetchTableData();
+          }
+        });
+      }
+    });
   }
 }
