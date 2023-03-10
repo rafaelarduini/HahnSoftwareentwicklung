@@ -27,9 +27,22 @@ export class ClientDialogComponent {
   ngOnInit(): void {
     this.clientForm = this.formBuilder.group({
       id: [this.client.id],
-      name: [this.client.name, Validators.required],
-      surname: [this.client.surname, Validators.required],
-      email: [this.client.email, Validators.email],
+      name: [
+        this.client.name,
+        Validators.compose([Validators.required, Validators.maxLength(100)]),
+      ],
+      surname: [
+        this.client.surname,
+        Validators.compose([Validators.required, Validators.maxLength(100)]),
+      ],
+      email: [
+        this.client.email,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(100),
+          Validators.email,
+        ]),
+      ],
     });
   }
 

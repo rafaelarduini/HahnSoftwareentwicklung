@@ -27,8 +27,18 @@ export class ProductDialogComponent {
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
       id: [this.product.id],
-      name: [this.product.name, Validators.required],
-      price: [this.product.price, Validators.min(0.01)],
+      name: [
+        this.product.name,
+        Validators.compose([Validators.required, Validators.maxLength(100)]),
+      ],
+      price: [
+        this.product.price,
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(100),
+          Validators.min(0.01),
+        ]),
+      ],
     });
   }
 
