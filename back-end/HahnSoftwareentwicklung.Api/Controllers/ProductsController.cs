@@ -1,4 +1,4 @@
-﻿using HahnSoftwareentwicklung.Application.Dtos;
+﻿using HahnSoftwareentwicklung.Api.Model.Product;
 using HahnSoftwareentwicklung.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,29 +28,27 @@ namespace HahnSoftwareentwicklung.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] ProductDto productDto)
+        public ActionResult Post([FromBody] ProductPostRequest product)
         {
-            if (productDto == null)
+            if (product == null)
             {
                 return NotFound();
             }
 
-            _productApplicationService.Add(productDto);
-
-            return Ok("Product registered successfully!");
+            _productApplicationService.Add(product);
+            return Ok(product);
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] ProductDto productDto)
+        public ActionResult Put([FromBody] ProductPutRequest product)
         {
-            if (productDto == null)
+            if (product == null)
             {
                 return NotFound();
             }
 
-            _productApplicationService.Update(productDto);
-
-            return Ok("Product updated successfully!");
+            _productApplicationService.Update(product);
+            return Ok(product);
         }
 
         [HttpDelete("id")]
@@ -62,7 +60,7 @@ namespace HahnSoftwareentwicklung.Api.Controllers
             }
 
             _productApplicationService.Delete(id);
-            return Ok("Product deleted successfully!");
+            return Ok(id);
         }
     }
 }

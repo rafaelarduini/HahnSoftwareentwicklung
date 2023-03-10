@@ -1,5 +1,9 @@
-using Autofac.Extensions.DependencyInjection;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using HahnSoftwareentwicklung.Api.Model.Client;
+using HahnSoftwareentwicklung.Api.Model.Product;
 using HahnSoftwareentwicklung.Infrastructure.CrossCutting.IOC;
 using HahnSoftwareentwicklung.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -19,10 +23,15 @@ builder.Services.AddDbContext<SqlContext>(options =>
 });
 
 builder.Services.AddCors();
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<IValidator<ClientPostRequest>, ClientPostValidator>();
+builder.Services.AddTransient<IValidator<ClientPutRequest>, ClientPutValidator>();
+builder.Services.AddTransient<IValidator<ProductPostRequest>, ProductPostValidator>();
+builder.Services.AddTransient<IValidator<ProductPutRequest>, ProductPutValidator>();
 
 var app = builder.Build();
 
