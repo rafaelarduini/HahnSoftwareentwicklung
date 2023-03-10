@@ -7,16 +7,20 @@ namespace HahnSoftwareentwicklung.Api.Model.Product
         public ProductPutValidator()
         {
             RuleFor(c => c.Id)
-                .NotEmpty()
+                .GreaterThan(0)
                 .WithMessage($"'Id' is required");
 
             RuleFor(c => c.Name)
                 .NotEmpty()
                 .WithMessage($"'Name' is required");
 
+            RuleFor(c => c.Name)
+                .MaximumLength(100)
+                .WithMessage($"'Name' max length is 100");
+
             RuleFor(c => c.Price)
-                .NotEmpty()
-                .WithMessage($"'Surname' is required");
+                .GreaterThan(0)
+                .WithMessage($"'Price' must be greater than zero");
         }
     }
 }

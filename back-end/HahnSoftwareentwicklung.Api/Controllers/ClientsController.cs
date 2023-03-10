@@ -1,4 +1,5 @@
 ﻿using HahnSoftwareentwicklung.Api.Model.Client;
+using HahnSoftwareentwicklung.Application.Dtos;
 using HahnSoftwareentwicklung.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,14 +17,17 @@ namespace HahnSoftwareentwicklung.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<ClientDto>> Get()
         {
             return Ok(_clientApplicationService.GetAll());
         }
 
         [HttpGet("id")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<ClientDto> Get(int id)
         {
+            if (id == 0)
+                return NotFound();
+
             return Ok(_clientApplicationService.Get(id));
         }
 
@@ -31,9 +35,7 @@ namespace HahnSoftwareentwicklung.Api.Controllers
         public ActionResult Post([FromBody] ClientPostRequest client)
         {
             if (client == null)
-            {
                 return NotFound();
-            }
 
             _clientApplicationService.Add(client);
             return Ok(client);
@@ -43,9 +45,7 @@ namespace HahnSoftwareentwicklung.Api.Controllers
         public ActionResult Put([FromBody] ClientPutRequest client)
         {
             if (client == null)
-            {
                 return NotFound();
-            }
 
             _clientApplicationService.Update(client);
             return Ok(client);
@@ -55,9 +55,7 @@ namespace HahnSoftwareentwicklung.Api.Controllers
         public ActionResult Delete(int id)
         {
             if (id == 0)
-            {
                 return NotFound();
-            }
 
             _clientApplicationService.Delete(id);
             return Ok(id);
