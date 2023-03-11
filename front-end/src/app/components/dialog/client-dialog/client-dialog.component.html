@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>{{ isEdit ? "Edit" : "Add" }} Client Form</h1>
 <div mat-dialog-content>
-  <form [formGroup]="clientForm" class="body">
-    <mat-form-field class="example-full-width">
+  <form [formGroup]="clientForm" class="client-form">
+    <mat-form-field>
       <mat-label>Name</mat-label>
       <input
         formControlName="name"
@@ -10,7 +10,7 @@
         value="{{ client.name }}"
       />
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
       <mat-label>Surname</mat-label>
       <input
         formControlName="surname"
@@ -19,7 +19,7 @@
         value="{{ client.surname }}"
       />
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
       <mat-label>Email</mat-label>
       <input
         formControlName="email"
@@ -32,7 +32,7 @@
   <div class="footer">
     <button mat-raised-button mat-dialog-close color="accent">Close</button>
     <button
-      style="margin-left: 10px"
+      class="save-button"
       mat-raised-button
       color="primary"
       (click)="onConfirm()"

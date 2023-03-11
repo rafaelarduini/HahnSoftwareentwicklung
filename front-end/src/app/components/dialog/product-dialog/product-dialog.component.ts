@@ -9,9 +9,9 @@ import { Product } from 'src/app/model/product';
   styleUrls: ['./product-dialog.component.scss'],
 })
 export class ProductDialogComponent {
-  productForm!: FormGroup;
-  product = new Product();
-  isEdit: boolean = false;
+  public productForm!: FormGroup;
+  public product = new Product();
+  public isEdit: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<ProductDialogComponent>,

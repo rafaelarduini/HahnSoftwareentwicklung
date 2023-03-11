@@ -19,16 +19,7 @@ export class ProductService extends ApiService<Product> {
 }
 
 export class ProductSerializer {
-  fromJson(json: any): Product {
-    const product = new Product();
-    product.id = json.id;
-    product.name = json.name;
-    product.price = json.price;
-
-    return product;
-  }
-
-  toJson(product: Product): any {
+  public toJson(product: Product): any {
     return {
       id: product.id,
       name: product.name,

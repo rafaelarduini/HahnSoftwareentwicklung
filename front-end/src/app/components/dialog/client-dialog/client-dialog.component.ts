@@ -9,9 +9,9 @@ import { Client } from 'src/app/model/client';
   styleUrls: ['./client-dialog.component.scss'],
 })
 export class ClientDialogComponent {
-  clientForm!: FormGroup;
-  client = new Client();
-  isEdit: boolean = false;
+  public clientForm!: FormGroup;
+  public client = new Client();
+  public isEdit: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<ClientDialogComponent>,
@@ -46,7 +46,7 @@ export class ClientDialogComponent {
     });
   }
 
-  onConfirm(): void {
+  public onConfirm(): void {
     if (this.clientForm.valid) {
       this.dialogRef.close(this.clientForm.value);
     } else {

@@ -11,18 +11,9 @@ export class ClientService extends ApiService<Client> {
     super(httpClient, 'Clients', new ClientSerializer());
   }
 }
+
 export class ClientSerializer {
-  fromJson(json: any): Client {
-    const client = new Client();
-    client.id = json.id;
-    client.name = json.name;
-    client.surname = json.surname;
-    client.email = json.email;
-
-    return client;
-  }
-
-  toJson(client: Client): any {
+  public toJson(client: Client): any {
     return {
       id: client.id,
       name: client.name,

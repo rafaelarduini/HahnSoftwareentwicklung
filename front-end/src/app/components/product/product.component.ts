@@ -1,3 +1,4 @@
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
@@ -12,10 +13,15 @@ import { ProductDialogComponent } from '../dialog/product-dialog/product-dialog.
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent {
-  products: Product[] = [];
-  product!: Product;
-  dataSource = [...this.products];
-  displayedColumns: string[] = ['position', 'name', 'price', 'edit', 'delete'];
+  private products: Product[] = [];
+  public dataSource = [...this.products];
+  public displayedColumns: string[] = [
+    'position',
+    'name',
+    'price',
+    'edit',
+    'delete',
+  ];
   @ViewChild(MatTable)
   table!: MatTable<ProductElement>;
 
@@ -28,10 +34,16 @@ export class ProductComponent {
     this.getProducts();
   }
 
-  private getProducts() {
-    this.productService.get().subscribe((productsResponse) => {
-      this.products = productsResponse;
-      this.fetchTableData();
+  private getProducts(): void {
+    this.productService.get().subscribe((result) => {
+      if (result.status == 200) {
+        const response = result as HttpResponse<Product[]>;
+        this.products = response.body as Product[];
+        this.fetchTableData();
+      } else {
+        const response = result as HttpErrorResponse;
+        alert(`${response.message}`);
+      }
     });
   }
 
@@ -39,7 +51,6 @@ export class ProductComponent {
     this.dataSource = [];
     this.products.forEach((product, index) => {
       const element = Object.assign({ position: index }, product);
-
       this.dataSource.push(element);
     });
     this.table.renderRows();
@@ -52,11 +63,12 @@ export class ProductComponent {
 
     dialogRef.afterClosed().subscribe((product: Product) => {
       if (product) {
-        this.productService.add(product).subscribe((result: any) => {
-          if (result.status) {
-            alert(`${result.error.title}`);
-          } else {
+        this.productService.add(product).subscribe((result) => {
+          if (result.status == 200) {
             this.getProducts();
+          } else {
+            const response = result as HttpErrorResponse;
+            alert(`${response.message}`);
           }
         });
       }
@@ -73,12 +85,13 @@ export class ProductComponent {
 
     dialogRef.afterClosed().subscribe((product: Product) => {
       if (product) {
-        this.productService.update(product).subscribe((result: any) => {
-          if (result.status) {
-            alert(`${result.error.title}`);
-          } else {
+        this.productService.update(product).subscribe((result) => {
+          if (result.status == 200) {
             this.products[element.position] = product;
             this.fetchTableData();
+          } else {
+            const response = result as HttpErrorResponse;
+            alert(`${response.message}`);
           }
         });
       }
@@ -87,18 +100,19 @@ export class ProductComponent {
 
   public openDeleteDialog(element: ProductElement): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      width: '30%',
+      width: '20%',
       data: element.name,
     });
 
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.productService.delete(element.id).subscribe((result) => {
-          if (result.status) {
-            alert(`${result.error.title}`);
-          } else {
+          if (result.status == 200) {
             this.products.splice(element.position, 1);
             this.fetchTableData();
+          } else {
+            const response = result as HttpErrorResponse;
+            alert(`${response.message}`);
           }
         });
       }

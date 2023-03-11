@@ -1,4 +1,4 @@
-.table {
+.client-table {
   height: 90%;
 }
 .button-container {
@@ -6,7 +6,10 @@
   display: flex;
   align-items: center;
 }
-.body {
+.page-body {
   margin-left: 20px;
   margin-right: 20px;
+}
+.add-button {
+  margin-left: 20px;
 }

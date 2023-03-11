@@ -1,3 +1,4 @@
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
@@ -12,10 +13,9 @@ import { DeleteDialogComponent } from '../dialog/delete-dialog/delete-dialog.com
   styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent implements OnInit {
-  clients: Client[] = [];
-  client!: Client;
-  dataSource = [...this.clients];
-  displayedColumns: string[] = [
+  private clients: Client[] = [];
+  public dataSource = [...this.clients];
+  public displayedColumns: string[] = [
     'position',
     'name',
     'surname',
@@ -35,10 +35,16 @@ export class ClientComponent implements OnInit {
     this.getClients();
   }
 
-  private getClients() {
-    this.clientService.get().subscribe((clientsResponse) => {
-      this.clients = clientsResponse;
-      this.fetchTableData();
+  private getClients(): void {
+    this.clientService.get().subscribe((result) => {
+      if (result.status == 200) {
+        const response = result as HttpResponse<Client[]>;
+        this.clients = response.body as Client[];
+        this.fetchTableData();
+      } else {
+        const errorResponse = result as HttpErrorResponse;
+        alert(`${errorResponse.message}`);
+      }
     });
   }
 
@@ -46,7 +52,6 @@ export class ClientComponent implements OnInit {
     this.dataSource = [];
     this.clients.forEach((client, index) => {
       const element = Object.assign({ position: index }, client);
-
       this.dataSource.push(element);
     });
     this.table.renderRows();
@@ -59,11 +64,12 @@ export class ClientComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((client: Client) => {
       if (client) {
-        this.clientService.add(client).subscribe((result: any) => {
-          if (result.status) {
-            alert(`${result.error.title}`);
-          } else {
+        this.clientService.add(client).subscribe((result) => {
+          if (result.status == 200) {
             this.getClients();
+          } else {
+            const response = result as HttpErrorResponse;
+            alert(`${response.message}`);
           }
         });
       }
@@ -71,21 +77,20 @@ export class ClientComponent implements OnInit {
   }
 
   public openEditDialog(element: ClientElement): void {
-    const client: Client = Object.assign(element);
-
     const dialogRef = this.dialog.open(ClientDialogComponent, {
       width: '30%',
-      data: client,
+      data: element,
     });
 
     dialogRef.afterClosed().subscribe((client: Client) => {
       if (client) {
-        this.clientService.update(client).subscribe((result: any) => {
-          if (result.status) {
-            alert(`${result.error.title}`);
-          } else {
+        this.clientService.update(client).subscribe((result) => {
+          if (result.status == 200) {
             this.clients[element.position] = client;
             this.fetchTableData();
+          } else {
+            const response = result as HttpErrorResponse;
+            alert(`${response.message}`);
           }
         });
       }
@@ -94,18 +99,19 @@ export class ClientComponent implements OnInit {
 
   public openDeleteDialog(element: ClientElement): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      width: '30%',
+      width: '20%',
       data: element.name,
     });
 
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.clientService.delete(element.id).subscribe((result) => {
-          if (result.status) {
-            alert(`${result.error.title}`);
-          } else {
+          if (result.status == 200) {
             this.clients.splice(element.position, 1);
             this.fetchTableData();
+          } else {
+            const response = result as HttpErrorResponse;
+            alert(`${response.message}`);
           }
         });
       }

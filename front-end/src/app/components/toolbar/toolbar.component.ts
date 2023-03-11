@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent {
-  clientSelected!: boolean;
+  private clientSelected: boolean = true;
 
   constructor(private router: Router) {}
 

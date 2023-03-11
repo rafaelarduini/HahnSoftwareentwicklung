@@ -33,7 +33,7 @@ namespace HahnSoftwareentwicklung.Api.Controllers
         public ActionResult<ProductDto> Get(int id)
         {
             try
-            {
+            {              
                 if (id == 0)
                     return NotFound();
 

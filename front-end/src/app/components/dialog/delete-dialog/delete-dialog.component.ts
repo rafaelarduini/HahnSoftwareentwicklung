@@ -16,7 +16,7 @@ export class DeleteDialogComponent {
     this.elementName = name;
   }
 
-  onConfirm(): void {
+  public onConfirm(): void {
     this.dialogRef.close(true);
   }
 }
