@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>{{ isEdit ? "Edit" : "Add" }} Client Form</h1>
+<div mat-dialog-content>
+  <form [formGroup]="clientForm" class="client-form">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input
+        formControlName="name"
+        matInput
+        placeholder="Your name"
+        value="{{ client.name }}"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Surname</mat-label>
+      <input
+        formControlName="surname"
+        matInput
+        placeholder="Your surname"
+        value="{{ client.surname }}"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        placeholder="name@email.com"
+        value="{{ client.email }}"
+      />
+    </mat-form-field>
+  </form>
+  <div class="footer">
+    <button mat-raised-button mat-dialog-close color="accent">Close</button>
+    <button
+      class="save-button"
+      mat-raised-button
+      color="primary"
+      (click)="onConfirm()"
+    >
+      Save
+    </button>
+  </div>
+</div>

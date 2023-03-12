@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon>create</mat-icon>
+  </button>
+  <span>Hahn Angular CRUD</span>
+  <button
+    class="toolbar-button"
+    mat-raised-button
+    (click)="handleClientsButtonClick()"
+    color="accent"
+  >
+    Clients
+  </button>
+
+  <button
+    class="toolbar-button"
+    mat-raised-button
+    (click)="handleProductsButtonClick()"
+    color="accent"
+  >
+    Products
+  </button>
+</mat-toolbar>
