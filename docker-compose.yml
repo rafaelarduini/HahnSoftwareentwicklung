@@ -1,0 +1,44 @@
+version: '2.1'
+services:
+    sqlserver:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        environment:
+            SA_PASSWORD: hahn2023#
+            ACCEPT_EULA: Y
+            MSSQL_PID: Developer
+        ports:
+            - 1433:1433
+
+    mssqltools:
+        image: mcr.microsoft.com/mssql-tools
+        depends_on:
+            - sqlserver
+        volumes:
+            - ./setup.sql:/tmp/setup.sql
+            - ./entrypoint.sh:/tmp/entrypoint.sh
+        command: /bin/bash ./tmp/entrypoint.sh
+
+    api:
+        image: rafaelarduini/hahn-api:v1
+        container_name: HahnSoftwareentwicklungApi
+        restart: always
+        build:
+            context: .
+            dockerfile: ./back-end/HahnSoftwareentwicklung.Api/Dockerfile
+        ports:
+            - 80:80
+        depends_on:
+            - mssqltools
+
+    web:
+        image: rafaelarduini/hahn-front-end:v1
+        container_name: HahnSoftwareentwicklungWeb
+        build:
+            context: .
+            dockerfile: ./front-end/Dockerfile
+        environment:
+            NODE_ENV: production
+        ports:
+            - 4200:4200
+        depends_on:
+            - api

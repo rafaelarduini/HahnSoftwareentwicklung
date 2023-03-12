@@ -11,7 +11,7 @@ import { Resource, Serializer } from '../model/resource';
   providedIn: 'root',
 })
 export class ApiService<T extends Resource> {
-  private url: string = 'https://localhost:32768';
+  private url: string = 'http://localhost:80';
 
   constructor(
     private httpClient: HttpClient,
