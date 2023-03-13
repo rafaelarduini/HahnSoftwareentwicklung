@@ -1,5 +1,5 @@
 ﻿using HahnSoftwareentwicklung.Domain.Entities;
-using HahnSoftwareentwicklung.DomainCore.Interfaces.Repositories;
+using HahnSoftwareentwicklung.Domain.Core.Interfaces.Repositories;
 
 namespace HahnSoftwareentwicklung.Infrastructure.Data.Repositories
 {

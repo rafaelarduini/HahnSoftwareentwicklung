@@ -1,7 +1,7 @@
-﻿using HahnSoftwareentwicklung.DomainCore.Interfaces.Repositories;
-using HahnSoftwareentwicklung.DomainCore.Interfaces.Services;
+﻿using HahnSoftwareentwicklung.Domain.Core.Interfaces.Repositories;
+using HahnSoftwareentwicklung.Domain.Core.Interfaces.Services;
 
-namespace HahnSoftwareentwicklung.DomainService
+namespace HahnSoftwareentwicklung.Domain.Service
 {
     public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class
     {

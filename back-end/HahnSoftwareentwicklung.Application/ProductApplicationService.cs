@@ -1,7 +1,7 @@
 ﻿using HahnSoftwareentwicklung.Application.Dtos;
 using HahnSoftwareentwicklung.Application.Interfaces;
 using HahnSoftwareentwicklung.Application.Mappers.Interfaces;
-using HahnSoftwareentwicklung.DomainCore.Interfaces.Services;
+using HahnSoftwareentwicklung.Domain.Core.Interfaces.Services;
 
 namespace HahnSoftwareentwicklung.Application
 {

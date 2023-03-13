@@ -1,6 +1,6 @@
 ﻿using HahnSoftwareentwicklung.Domain.Entities;
 
-namespace HahnSoftwareentwicklung.DomainCore.Interfaces.Repositories
+namespace HahnSoftwareentwicklung.Domain.Core.Interfaces.Repositories
 {
     public interface IClientRepository : IBaseRepository<Client>
     {

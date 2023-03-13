@@ -1,4 +1,4 @@
-﻿namespace HahnSoftwareentwicklung.DomainCore.Interfaces.Repositories
+﻿namespace HahnSoftwareentwicklung.Domain.Core.Interfaces.Repositories
 {
     public interface IBaseRepository<TEntitiy> where TEntitiy : class
     {

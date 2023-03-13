@@ -3,9 +3,9 @@ using HahnSoftwareentwicklung.Application;
 using HahnSoftwareentwicklung.Application.Interfaces;
 using HahnSoftwareentwicklung.Application.Mapper;
 using HahnSoftwareentwicklung.Application.Mappers.Interfaces;
-using HahnSoftwareentwicklung.DomainCore.Interfaces.Repositories;
-using HahnSoftwareentwicklung.DomainCore.Interfaces.Services;
-using HahnSoftwareentwicklung.DomainService;
+using HahnSoftwareentwicklung.Domain.Core.Interfaces.Repositories;
+using HahnSoftwareentwicklung.Domain.Core.Interfaces.Services;
+using HahnSoftwareentwicklung.Domain.Service;
 using HahnSoftwareentwicklung.Infrastructure.Data.Repositories;
 
 namespace HahnSoftwareentwicklung.Infrastructure.CrossCutting.IOC

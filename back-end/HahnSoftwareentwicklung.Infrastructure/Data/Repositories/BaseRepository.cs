@@ -1,4 +1,4 @@
-﻿using HahnSoftwareentwicklung.DomainCore.Interfaces.Repositories;
+﻿using HahnSoftwareentwicklung.Domain.Core.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace HahnSoftwareentwicklung.Infrastructure.Data.Repositories
