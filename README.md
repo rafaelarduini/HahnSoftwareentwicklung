@@ -12,6 +12,6 @@ API:
 http://localhost:80/Clients
 
 Sql Server:
-User: sa
-Password: hahn#
-Port: 1433
+user: sa
+password: hahn#
+port: 1433
