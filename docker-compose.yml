@@ -1,16 +1,19 @@
 version: '2.1'
 services:
     sqlserver:
-        image: mcr.microsoft.com/mssql/server:2019-latest
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        container_name: SqlServer
         environment:
+            MSSQL_SA_PASSWORD: hahn2023#
             SA_PASSWORD: hahn2023#
             ACCEPT_EULA: Y
-            MSSQL_PID: Developer
+            MSSQL_PID: Express
         ports:
             - 1433:1433
 
     mssqltools:
         image: mcr.microsoft.com/mssql-tools
+        container_name: SqlTools
         depends_on:
             - sqlserver
         volumes:
@@ -20,7 +23,7 @@ services:
 
     api:
         image: rafaelarduini/hahn-api:v1
-        container_name: HahnSoftwareentwicklungApi
+        container_name: Api
         restart: always
         build:
             context: .
@@ -32,7 +35,7 @@ services:
 
     web:
         image: rafaelarduini/hahn-front-end:v1
-        container_name: HahnSoftwareentwicklungWeb
+        container_name: Web
         build:
             context: .
             dockerfile: ./front-end/Dockerfile
