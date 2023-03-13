@@ -13,8 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HahnSoftwareentwicklung.Application\HahnSoftwareentwicklung.Application.csproj" />
-    <ProjectReference Include="..\HahnSoftwareentwicklung.DomainCore\HahnSoftwareentwicklung.Domain.Core.csproj" />
-    <ProjectReference Include="..\HahnSoftwareentwicklung.DomainService\HahnSoftwareentwicklung.Domain.Service.csproj" />
+    <ProjectReference Include="..\HahnSoftwareentwicklung.Domain.Service\HahnSoftwareentwicklung.Domain.Service.csproj" />
     <ProjectReference Include="..\HahnSoftwareentwicklung.Domain\HahnSoftwareentwicklung.Domain.csproj" />
   </ItemGroup>
 

@@ -9,9 +9,9 @@ WORKDIR /src
 COPY ["HahnSoftwareentwicklung.Api/HahnSoftwareentwicklung.Api.csproj", "HahnSoftwareentwicklung.Api/"]
 COPY ["HahnSoftwareentwicklung.Infrastructure/HahnSoftwareentwicklung.Infrastructure.csproj", "HahnSoftwareentwicklung.Infrastructure/"]
 COPY ["HahnSoftwareentwicklung.Application/HahnSoftwareentwicklung.Application.csproj", "HahnSoftwareentwicklung.Application/"]
-COPY ["HahnSoftwareentwicklung.DomainCore/HahnSoftwareentwicklung.Domain.Core.csproj", "HahnSoftwareentwicklung.Domain.Core/"]
+COPY ["HahnSoftwareentwicklung.Domain.Core/HahnSoftwareentwicklung.Domain.Core.csproj", "HahnSoftwareentwicklung.Domain.Core/"]
 COPY ["HahnSoftwareentwicklung.Domain/HahnSoftwareentwicklung.Domain.csproj", "HahnSoftwareentwicklung.Domain/"]
-COPY ["HahnSoftwareentwicklung.DomainService/HahnSoftwareentwicklung.Domain.Service.csproj", "HahnSoftwareentwicklung.Domain.Service/"]
+COPY ["HahnSoftwareentwicklung.Domain.Service/HahnSoftwareentwicklung.Domain.Service.csproj", "HahnSoftwareentwicklung.Domain.Service/"]
 RUN dotnet restore "HahnSoftwareentwicklung.Api/HahnSoftwareentwicklung.Api.csproj"
 COPY . .
 WORKDIR "/src/HahnSoftwareentwicklung.Api"

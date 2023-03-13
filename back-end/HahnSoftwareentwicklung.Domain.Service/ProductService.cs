@@ -1,6 +1,6 @@
-﻿using HahnSoftwareentwicklung.Domain.Entities;
-using HahnSoftwareentwicklung.Domain.Core.Interfaces.Repositories;
+﻿using HahnSoftwareentwicklung.Domain.Core.Interfaces.Repositories;
 using HahnSoftwareentwicklung.Domain.Core.Interfaces.Services;
+using HahnSoftwareentwicklung.Domain.Entities;
 
 namespace HahnSoftwareentwicklung.Domain.Service
 {
