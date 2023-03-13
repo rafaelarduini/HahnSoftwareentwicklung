@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.Domain", "HahnSoftwareentwicklung.Domain\HahnSoftwareentwicklung.Domain.csproj", "{E4760EB1-8DBC-4737-9A2B-71F1ACA4189A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.DomainCore", "HahnSoftwareentwicklung.DomainCore\HahnSoftwareentwicklung.DomainCore.csproj", "{B5C26E89-FBBD-43C1-978D-A71B0A34C284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.Domain.Core", "HahnSoftwareentwicklung.DomainCore\HahnSoftwareentwicklung.Domain.Core.csproj", "{B5C26E89-FBBD-43C1-978D-A71B0A34C284}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.DomainService", "HahnSoftwareentwicklung.DomainService\HahnSoftwareentwicklung.DomainService.csproj", "{A3ADB981-544C-4B4F-8370-F019FAD0C9B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.Domain.Service", "HahnSoftwareentwicklung.DomainService\HahnSoftwareentwicklung.Domain.Service.csproj", "{A3ADB981-544C-4B4F-8370-F019FAD0C9B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HahnSoftwareentwicklung.Infrastructure", "HahnSoftwareentwicklung.Infrastructure\HahnSoftwareentwicklung.Infrastructure.csproj", "{3F4CFF9A-8C0E-4957-81E7-11FBB5424D12}"
 EndProject
