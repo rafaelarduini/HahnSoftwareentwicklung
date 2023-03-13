@@ -13,11 +13,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterMod
 // Add services to the container.
 
 string connString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-builder.Services.AddDbContext<SqlContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder.Services.AddDbContext<SqlContext>(options => { options.UseSqlServer(connString); });
 
 builder.Services.AddCors();
 builder.Services.AddControllers().AddFluentValidation(config =>

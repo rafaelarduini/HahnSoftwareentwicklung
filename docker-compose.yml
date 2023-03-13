@@ -17,8 +17,8 @@ services:
         depends_on:
             - sqlserver
         volumes:
-            - ./setup.sql:/tmp/setup.sql
-            - ./entrypoint.sh:/tmp/entrypoint.sh
+            - ./scripts/setup.sql:/tmp/setup.sql
+            - ./scripts/entrypoint.sh:/tmp/entrypoint.sh
         command: /bin/bash ./tmp/entrypoint.sh
 
     api:
@@ -26,19 +26,21 @@ services:
         container_name: Api
         restart: always
         build:
-            context: .
-            dockerfile: ./back-end/HahnSoftwareentwicklung.Api/Dockerfile
+            context: back-end
+            dockerfile: ./HahnSoftwareentwicklung.Api/Dockerfile
         ports:
             - 80:80
+        deploy:
+            labels:
+            - "com.microsoft.created-by=visual-studio"
+            - "com.microsoft.visual-studio.project-name=HahnSoftwareentwicklung.Api"
         depends_on:
             - mssqltools
 
     web:
         image: rafaelarduini/hahn-front-end:v1
         container_name: Web
-        build:
-            context: .
-            dockerfile: ./front-end/Dockerfile
+        build: ./front-end
         environment:
             NODE_ENV: production
         ports:
