@@ -26,8 +26,7 @@ BEGIN
 	('Rafael', 'Arduini', 'rafaelarduini@hotmail.com', GETDATE(), 1),
 	('Aline Cristina', 'Espindola', 'alineespindola@hotmail.com', GETDATE(), 1),
 	('Luiz Claudio', 'Espindola', 'luizespindola@hotmail.com', GETDATE(), 1),
-	('Marco Antonio', 'Feliciano', 'marcofeliciano@hotmail.com', GETDATE(), 1),
-	('Rafael', 'Arduini', 'rafaelarduini@hotmail.com', GETDATE(), 1);
+	('Marco Antonio', 'Feliciano', 'marcofeliciano@hotmail.com', GETDATE(), 1);
 END
 GO
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Products' and xtype='U')
